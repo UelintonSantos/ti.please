@@ -1,0 +1,462 @@
+/* ESTILO GERAL DO SITE*/
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+/* COR E TAMANHO DA PÁGINA DO SITE */
+body {
+    
+    background-color: #000;
+    height: 100vh;                          
+}
+/* INTERFACE DO SITE-TAMANHO E MARGEM */
+.interface{
+    max-width: 1280px;
+    margin: 0 auto;
+}
+/* ESTILO DO SOBRE */
+.section.sobre{
+    padding: 80px 4%;
+}
+/* CLASSE FLEX */
+.flex{
+    display: flex;
+}
+/* BOTÃO DO WHATSAPP */
+.btn-contato button{ 
+    padding: 10px 20px;
+    font-size: 20px;
+    font-weight: 600;
+    background-color: #11ee87;
+    border: 0;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: .2s;   
+}
+
+h2.titulo{
+    color: #fff;
+    font-size: 38px;
+    text-align: center;
+}
+h2.titulo span{
+    color: #e40202;
+}
+
+button:hover, form .btn-enviar input:hover{
+    box-shadow: 0px 0px 8px #e40202;
+    transform: scale(1.05);
+}
+/* ESTILO DO CABEÇALHO */
+header{
+    padding: 40px 4%;
+    width: 100%;
+    background-color: #000;
+    height: 150px;
+    position: fixed;
+    top: 0;
+}
+/*H1 RESPOSAVEL PELO ASSUNTO DO TEXTO DA PÁGINA */
+.topo-do-site h1{
+    color: #fff;
+    font-size: 32px;
+    line-height: 40px;
+}
+
+.p{
+    color: #fff;
+    text-align: justify;   
+}
+
+.groove-container{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+/* INTERFACE DO SITE */
+header > .interface{
+    display: flex;
+    align-items:center;
+    justify-content: space-between;
+}
+/* MARCA A COR BRANCA DAS LETRAS DO MENU */
+header a{
+    color: #fff;
+    text-decoration: none;
+    display: inline-block;
+    transition: .2s;
+    font-size: 20px;  
+
+}
+/* MARCA A TRANSFORMAÇÃO DO MENU PARA A COR VERMELHA */
+  
+header nav.menu-desktop a:hover{
+    color: #e40202;
+    transform: scale(1.05);
+}
+/* NAV DO MENU */
+header nav ul{
+    list-style-type: none;      
+}
+/* FAZ PARTE DA NAVE DO MENU */
+header nav ul li{
+    display: inline-block;
+    padding: 0 20px;  
+}
+/* ESTILO DO MENU MOBILE */
+.btn-abrir-menu i{
+    color: #e40202;
+    font-size: 40px;
+}
+/*CONFIGURAÇÃO DO MENU MOBILE */
+.menu-mobile{
+    background-color: #000;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 99999;
+    width: 0%;
+    overflow: hidden;
+    transition: .5s;
+}
+/*BOTÃO DO MENU RESPONSIVEL */
+.menu-mobile.abrir-menu{
+    width: 70%;
+}
+/*BOTÃO DO MENU RESPONSIVEL */
+.menu-mobile.abrir-menu ~ .overlay-menu{
+    display: block;
+}
+/* ESTILO FECHAR DO MENU RESPONSIVEL */
+.menu-mobile.btn-fechar{
+    padding: 200px 5%;
+}
+/* COR DO BOTÃO DO MENU RESPONSIVEL */
+.menu-mobile.btn-fechar i{
+    color: #f80000;
+    font-size: 30px;
+}
+/* NAVEGAÇÃO DO MENU RESPONSIVEL */
+.menu-mobile nav ul{
+    text-align: left;
+}
+/* COR DO MENU RESPONSIVEL */
+.menu-mobile nav ul li a{
+    color: #ffffff;
+    font-size: 45px;
+    font-weight: 300;
+    padding: 27px 0%;
+    display: block;
+}
+/* COR DO MENU RESPONSIVEL */
+.menu-mobile nav ul li a:hover{
+background-color: #e40202;
+color: #000;
+}
+/* MENU RESPONSIVEL */
+.overlay-menu{
+    background-color: #000;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 88888;
+    display: none;
+}
+/* MENU RESPONSIVEL */
+label[for="bt_menu"]{
+    padding: 5px;
+    background-color: #000;
+    color: #f30808;
+    font-family: "Arial";
+    text-align: center;
+    font-size: 15px;
+    cursor: pointer;
+    width: 25px;
+    height: 50px;
+}
+/* ESCONDER O MENU PRINCIPAL, QUANDO TIVE RESPONSIVEL */
+#bt_menu{
+    display: none;
+}
+/* MANTER O MENU RESPONSIVEL */
+label[for="bt_menu"]{
+    display: none;
+}
+/* CABEÇALHO - PRA DEIXAR O SITE RESPONSIVO */
+.menu-desktop, .btn-contato{
+    display: inline-block;
+   }
+/* BOTÃO DO WHATSAPP */
+.btn-contato button:hover{
+    box-shadow: 0px 0px 8px #63f104b0;
+    transform: scale(1.05);
+}
+/* ESTILO DO TOPO DO SITE */
+section.topo-do-site{
+    padding: 40px 4%;
+    
+}
+/* TEXTO DO SITE */
+section.topo-do-site .flex{
+    align-items: center;
+    justify-content: center;
+    gap: 90px;    
+}
+/* TOPO DO SITE TEXTO DO SITE */
+.topo-do-site .txt-topo-site p{
+    color: #fff;
+    margin: 40px 0;
+    font-family: Arial, Helvetica, sans-serif; 
+                 width: 100%;
+                 margin: 0px;
+                 padding: 10px;               
+}
+/*  */
+.col-100 {
+    width: 100%;
+    float: left;
+    position: relative;
+}
+
+/*SLIDE DO SITE*/
+section.slider{
+    margin: 0 auto;
+    width: 100%;
+    height: auto;
+    padding: 0 !important;
+    overflow: hidden;
+}
+
+.slider-content{
+    width: 400%;
+    height: auto;
+    display: flex;
+}
+
+.slider-content input, .img-mobile{
+    display: none;
+}
+
+.slide-box{
+    width: 25%;
+    height: auto;
+    position: relative;
+    text-align: center;
+    transition: 1s;
+}
+
+.slide-box img{
+    width: 100%;
+}
+
+.nav-manual, .nav-auto{
+    position: absolute;
+    width: 100%;
+    margin-top: 35%;
+    display: flex;
+    justify-content: center;
+}
+
+.nav-manual .manual-btn, .nav-auto div{
+    border: 1px solid #ff0054;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.nav-manual .manual-btn:not(:last-child), .nav-auto div:not(:last-child){
+    margin-right: 10px;
+}
+
+.nav-manual .manual-btn:hover{
+    background-color: #ff0000;
+}
+
+#radio1:checked ~ .nav-auto .auto-btn1, #radio2:checked ~ .nav-auto .auto-btn2, #radio3:checked ~ .nav-auto .auto-btn3{
+    background-color: #ff0000;
+}
+
+#radio1:checked ~ .primeiro{
+    margin-left: 0%;
+}
+
+#radio2:checked ~ .primeiro{
+    margin-left: -25%;
+}
+
+#radio3:checked ~ .primeiro{
+    margin-left: -50%;
+}
+/* ESTILO DE FORMULÁRIO DE CONTATO */
+section.formulario{
+    padding: 80px 4x;
+}
+
+form{
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 40px;
+}
+
+form input, form textarea{
+    width: 100%;
+    background-color: #4e4e4e;
+    border: 0;
+    outline: 0;
+    padding: 2px 15px;
+    border-radius: 15px;
+    color: #fff;
+    font-size: 18px;   
+}
+form textarea::placeholder{
+    color: #fff;
+}
+form input::placeholder{
+    color: #fff;
+}
+form textarea{
+    resize: none;
+    max-height: 200px;
+}
+
+form .btn-enviar{
+    margin-top: 20px;
+    text-align: center;
+}
+
+form .btn-enviar input{
+    width: 120px;
+    background-color: #e40202;
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer;
+    transition: .2s;
+}
+/*INICIO DO ROTAPE DA PÁGINA*/
+/*REDES SOCIAIS*/
+.redes-sociais ul li { 
+    margin-left: 5px; /*ESPAÇO DAS REDES SOCIAIS*/
+    display: inline-block;
+    float: left;
+    list-style: none;
+}
+/*REDES SOCIAIS*/
+.redes-sociais { 
+    width: 35%;
+    float: left;
+}
+/* RODAPÉ COM A LOGO DO SITE */
+footer.rotape{
+    text-align: center;
+    color: #fff;
+    padding: 40px 4%;
+    box-shadow: 0 0 40px 10px #ffffff1d; 
+}
+footer .flex{
+    justify-content: space-between;
+}
+
+/* ABRIR MENU PRINCIPAL */
+.btn-abrir-menu{
+    display: none;
+}
+/* DEIXAR O SITE RESPONSIVO */
+@media screen and (max-width: 768px) {
+    .groove-container{
+        width: 100%;
+        flex-direction: column;
+    }
+    
+    .img-desktop{
+        display: none;
+    }
+
+    .img-mobile{
+        display: block;
+    }
+
+    .nav-auto, .nav-manual{
+        margin-top: 60%;
+    }
+
+  
+/* CLASSES GERAIS */
+.flex{
+  flex-direction: column;
+}
+ 
+/* TOPO DO SITE */
+section.topo-do-site .flex{
+    gap: 40px;
+}
+
+/* ESTILO DO TOPO DO SITE */
+section.topo-do-site{
+    padding: 2PX 8%;
+}
+
+/* TOPO DO SITE H1 */
+.topo-do-site h1{
+    font-size: 30px;
+}
+
+      /* FAZ O MENU SUMIR QUANTO DIMINUIR O TAMANHO */
+    .menu-desktop, .btn-contato{
+        display: none;
+    }
+    /* NAVEGAÇÃO DO MENU PRINCIPAL */
+    nav, article {
+        width: 100%;
+        height: auto;
+    }
+     /* FECHA MENU PRINCIPAL */
+    .btn-abrir-menu{
+        display: block;
+    }
+  /* RODAPÉ COM A LOGO DO SITE */
+footer.rotape{
+    padding: 5px;
+    text-align: center;
+    color: #fff;
+}
+
+}
+@media screen and (max-width: 768px) {
+    .groove-container{
+        width: 100%;
+        flex-direction: column;
+    }
+    .body {
+    
+        background-color:#000;                          
+    }
+
+    @media screen and (max-width: 900px) {
+        .body {
+    
+            background-color:#000;                          
+        }  
+    }
+
+    @media screen and (max-width: 600px) {
+        .body {
+    
+            background-color:#000;                          
+        }  
+    }
+}
