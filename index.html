@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TI.PLEASE - Construindo o Futuro com Solidez</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fff;
+            color: #000;
+        }
+        .text-red-brand { color: #e40202; }
+        .bg-red-brand { background-color: #e40202; }
+        .border-red-brand { border-color: #e40202; }
+        
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+        .table-scroll-container::-webkit-scrollbar { width: 4px; }
+        .table-scroll-container::-webkit-scrollbar-track { background: #f4f4f5; }
+        .table-scroll-container::-webkit-scrollbar-thumb { background: #e40202; border-radius: 10px; }
+
+        .chat-container { height: 400px; }
+        
+        @keyframes bounce-custom {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-4px); }
+        }
+        .dot-animate { animation: bounce-custom 0.6s infinite; }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.34.0"
+  }
+}
+</script>
+</head>
+<body class="antialiased selection:bg-red-600 selection:text-white">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 w-full z-50 bg-black text-white shadow-2xl border-b border-zinc-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="text-2xl font-extrabold tracking-tighter">
+                        TI.<span class="text-red-600">PLEASE</span>
+                    </a>
+                </div>
+                
+                <nav class="hidden md:flex space-x-10">
+                    <a href="#home" class="relative text-sm font-semibold uppercase tracking-wider hover:text-red-500 transition-all group">
+                        Home
+                        <span class="absolute left-0 -bottom-1 w-0 h-0.5 bg-red-600 transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="#informacao" class="relative text-sm font-semibold uppercase tracking-wider hover:text-red-500 transition-all group">
+                        Informação
+                        <span class="absolute left-0 -bottom-1 w-0 h-0.5 bg-red-600 transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="#servicos" class="relative text-sm font-semibold uppercase tracking-wider hover:text-red-500 transition-all group">
+                        Serviços
+                        <span class="absolute left-0 -bottom-1 w-0 h-0.5 bg-red-600 transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="#foto" class="relative text-sm font-semibold uppercase tracking-wider hover:text-red-500 transition-all group">
+                        imagens
+                        <span class="absolute left-0 -bottom-1 w-0 h-0.5 bg-red-600 transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="#video" class="relative text-sm font-semibold uppercase tracking-wider hover:text-red-500 transition-all group">Vídeo<span class="absolute left-0 -bottom-1 w-0 h-0.5 bg-red-600 transition-all group-hover:w-full"></span></a>
+                    <a href="#consultor" class="bg-red-600 px-4 py-2 rounded text-xs font-bold uppercase tracking-widest hover:bg-red-700 transition-all">
+                        Consultor IA
+                    </a>
+                </nav>
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="p-2 focus:outline-none">
+                        <svg id="menu-icon" class="h-6 w-6 text-white transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-black border-t border-zinc-800 transition-all duration-300 overflow-hidden">
+            <div class="px-6 py-4 space-y-4">
+                <a href="#home" class="block text-base font-medium border-b border-zinc-900 pb-2">Home</a>
+                <a href="#informacao" class="block text-base font-medium border-b border-zinc-900 pb-2">Informação</a>
+                <a href="#servicos" class="block text-base font-medium border-b border-zinc-900 pb-2">Serviços</a>
+                <a href="#foto" class="block text-base font-medium">Foto</a>
+                <a href="#video" class="nav-link text-sm font-semibold uppercase tracking-wider">Vídeo</a>
+            </div>
+        </div>
+    </header>
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="relative min-h-screen flex items-center justify-center pt-20">
+            <div class="absolute inset-0 z-0">
+                <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80" alt="TI" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-black opacity-80"></div>
+            </div>
+            <div class="relative z-10 text-center px-4 max-w-4xl">
+            <h1 class="text-4xl md:text-7xl font-extrabold text-white leading-tight tracking-tight">
+                Construindo o Futuro <br>
+                <span class="text-red-brand italic">com Solidez</span>
+            </h1>
+            <p class="mt-8 text-lg md:text-xl text-zinc-300 font-light max-w-2xl mx-auto leading-relaxed">
+                Tecnologia e infraestrutura pensadas para levar seu negócio ao próximo nível com total segurança, performance e eficiência.
+            </p>
+                
+            </div>
+        </div>
+        </section>
+
+         <!-- Services Section -->
+    <section id="informacao" class="py-24 bg-zinc-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-black uppercase tracking-tighter">O que fazemos</h2>
+                <div class="mt-4 h-1.5 w-24 bg-red-brand mx-auto"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+
+                <!-- Card 1 -->
+                <div class="bg-white p-10 custom-shadow border-t-8 border-black hover:border-red-brand transition-all group rounded-sm">
+                    <div class="w-16 h-16 bg-zinc-100 flex items-center justify-center mb-8 group-hover:bg-red-brand transition-colors rounded-sm">
+                        <svg class="w-8 h-8 text-red-brand group-hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Manutenção</h3>
+                    <p class="text-zinc-600 leading-relaxed font-light">Suporte técnico especializado para garantir que seus equipamentos operem em máxima performance.</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-white p-10 custom-shadow border-t-8 border-black hover:border-red-brand transition-all group rounded-sm">
+                    <div class="w-16 h-16 bg-zinc-100 flex items-center justify-center mb-8 group-hover:bg-red-brand transition-colors rounded-sm">
+                        <svg class="w-8 h-8 text-red-brand group-hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Segurança</h3>
+                    <p class="text-zinc-600 leading-relaxed font-light">Implementação de firewalls, antivírus corporativos e protocolos de proteção de dados críticos.</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-white p-10 custom-shadow border-t-8 border-black hover:border-red-brand transition-all group rounded-sm">
+                    <div class="w-16 h-16 bg-zinc-100 flex items-center justify-center mb-8 group-hover:bg-red-brand transition-colors rounded-sm">
+                        <svg class="w-8 h-8 text-red-brand group-hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Monitoramento</h3>
+                    <p class="text-zinc-600 leading-relaxed font-light">Acompanhamento em tempo real da sua rede para detecção proativa de anomalias.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <!-- Services Section -->
+        <section id="servicos" class="py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col lg:flex-row gap-16">
+                    <div class="w-full lg:w-2/3">
+                        <h2 class="text-4xl font-extrabold mb-4">Nossos <span class="text-red-600">Serviços</span></h2>
+                        <div class="relative mb-6">
+                            <input type="text" id="service-search" placeholder="O que você está procurando?" class="w-full pl-4 pr-12 py-4 border-2 border-zinc-100 rounded-lg focus:border-red-600 outline-none transition-all shadow-sm">
+                        </div>
+                        <div class="table-scroll-container max-h-[500px] overflow-y-auto border border-zinc-100 rounded-lg bg-zinc-50">
+                            <table id="services-table" class="w-full text-left border-collapse">
+                                <thead class="bg-black text-white sticky top-0 z-10">
+                                    <tr>
+                                        <th class="p-4 uppercase text-xs tracking-widest w-20">Cod</th>
+                                        <th class="p-4 uppercase text-xs tracking-widest">Serviço</th>
+                                        <th class="p-4 uppercase text-xs tracking-widest hidden md:table-cell">Descrição</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-zinc-200">
+                                    <!-- Dynamic rows via script -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="w-full lg:w-1/3 flex flex-col gap-6">
+                        <div className="bg-red-600 p-8 text-white rounded-lg shadow-lg bg-red-600 text-white p-8 rounded-lg">
+                            <h4 class="font-bold text-xl mb-2 italic">Precisa de ajuda agora?</h4>
+                            <p class="text-white/80 text-sm mb-6">Nossa IA está pronta para diagnosticar sua infraestrutura em segundos.</p>
+                            <a href="#consultor" class="inline-block bg-zinc-900 text-white px-8 py-3 text-xs font-bold uppercase tracking-widest hover:bg-black transition-colors">Iniciar Chat</a>
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&q=80" class="rounded-lg h-48 w-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Consultant Section -->
+        <section id="consultor" class="py-24 bg-zinc-900 text-white">
+            <div class="max-w-4xl mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-extrabold mb-4">Consultoria <span class="text-red-600">Inteligente</span></h2>
+                    <p class="text-zinc-400">Tire suas dúvidas técnicas com nossa IA treinada pela TI.PLEASE.</p>
+                </div>
+                <div class="bg-zinc-800 rounded-2xl shadow-2xl overflow-hidden border border-zinc-700 flex flex-col h-[550px]">
+                    <div class="bg-black p-4 flex items-center justify-between border-b border-zinc-700">
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 bg-red-600 rounded-full flex items-center justify-center font-bold text-xs">TI</div>
+                            <span class="text-sm font-bold">Especialista Virtual</span>
+                        </div>
+                        <div class="flex items-center gap-2"><div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div><span class="text-[10px] text-zinc-500 uppercase tracking-tighter">Online</span></div>
+                    </div>
+                    <div id="chat-messages" class="flex-1 overflow-y-auto p-6 space-y-4 scrollbar-hide bg-zinc-800/50">
+                        <div class="flex justify-start">
+                            <div class="bg-zinc-700 p-4 rounded-2xl rounded-tl-none text-sm max-w-[80%]">Olá! Sou o assistente da TI.PLEASE. Qual sua dúvida técnica hoje?</div>
+                        </div>
+                    </div>
+                    <div id="typing-indicator" class="px-6 py-2 hidden">
+                        <div class="flex gap-1">
+                            <div class="w-1 h-1 bg-zinc-500 rounded-full dot-animate"></div>
+                            <div class="w-1 h-1 bg-zinc-500 rounded-full dot-animate" style="animation-delay: 0.2s"></div>
+                            <div class="w-1 h-1 bg-zinc-500 rounded-full dot-animate" style="animation-delay: 0.4s"></div>
+                        </div>
+                    </div>
+                    <div class="p-4 bg-zinc-900 border-t border-zinc-700">
+                        <div class="flex gap-2">
+                            <input type="text" id="chat-input" placeholder="Pergunte sobre redes, sites ou hardware..." class="flex-1 px-4 py-3 bg-zinc-800 border border-zinc-700 rounded-xl outline-none focus:border-red-600 transition-all text-sm text-white">
+                            <button id="chat-send" class="bg-red-600 hover:bg-red-700 p-3 rounded-xl transition-all">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+         <!-- Gallery Section -->
+    <section id="foto" class="py-24 bg-zinc-950 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-extrabold uppercase tracking-widest">Imagens dos Serviços Realizados</h2>
+                <div class="mt-4 h-1 w-20 bg-red-brand mx-auto"></div>
+                <p class="mt-6 text-zinc-500 font-light">Conheça os detalhes de nossas implementações em campo.</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"><!-- Foto 1 -->
+                <div class="group relative h-80 overflow-hidden rounded-lg shadow-lg">
+                    <img src="./img/NOTEBOOK01.jpg" alt="Mantenção do Notebook" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                        <i class="fa-solid fa-magnifying-glass text-white text-3xl"></i>
+                    </div>
+                </div>            
+                <div class="group relative h-80 overflow-hidden rounded-lg shadow-lg"><!-- Foto 2 -->
+                    <img src="./img/RACKE01.jpg" alt="Servidores" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                        <i class="fa-solid fa-magnifying-glass text-white text-3xl"></i>
+                    </div>
+                </div>
+                <div class="group relative h-80 overflow-hidden rounded-lg shadow-lg"><!-- Foto 3 -->
+                    <img src="./img/grafana.PNG" alt="Rede" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                        <i class="fa-solid fa-magnifying-glass text-white text-3xl"></i>
+                    </div>
+                </div>
+                <div class="group relative h-80 overflow-hidden rounded-lg shadow-lg"><!-- Foto 4 -->
+                    <img src="./img/pcdo usuário01.jpg" alt="Suporte" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                        <i class="fa-solid fa-magnifying-glass text-white text-3xl"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Placeholder Section (opcional, baseada no menu) -->
+    <section id="video" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+             <div class="bg-black rounded-sm p-12 text-center text-white">
+                 <h2 class="text-3xl font-bold mb-6 italic">ACOMPANHE NOSSO CANAL</h2>
+                 <p class="text-zinc-400 mb-8 max-w-xl mx-auto">Em nosso canal damos dicas de manutenção, infraestrutura, segurança e muito mais.</p>
+                 
+
+                <button> 
+                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 justify-items-center"><!-- AQUI FICA O VÍDEO 01 --> 
+    <div class="aspect-video w-full">
+        <iframe class="w-full h-full border-4 border-red-brand" src="https://www.youtube.com/embed/nzV98k91uqo?si=xscuyrLJpjwAce1Q" frameborder="0" allowfullscreen></iframe>
+    </div>              
+    <div class="aspect-video w-full"><!-- AQUI FICA O VÍDEO 02 --> 
+        <iframe class="w-full h-full border-4 border-red-brand" src="https://www.youtube.com/embed/-pafAK6Jyuw?si=02FvgvIzPk0JT3ee" frameborder="0" allowfullscreen></iframe>
+    </div>
+</div>               
+</button>
+ </div>
+</div>                
+    </section>
+    </main>
+
+     <!-- Footer -->
+    <footer class="bg-black text-white pt-20 pb-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16 border-b border-zinc-900 pb-16">
+                <div class="md:col-span-2">
+                    <a href="#" class="text-3xl font-extrabold tracking-tighter">
+                        TI.<span class="text-red-brand">PLEASE</span>
+                    </a>
+                    <p class="mt-6 text-zinc-500 max-w-sm font-light leading-relaxed">
+                        Sua parceira estratégica em tecnologia. Do suporte básico ao avançado na sua infraestrutura de rede, garantimos que sua TI seja seu maior diferencial competitivo.
+                    </p>
+                </div>
+                
+                <div>
+    <h5 class="text-white font-bold uppercase tracking-widest mb-6">Contato</h5>
+    <ul class="space-y-4 text-zinc-500 mb-10">
+        <li class="flex items-center gap-2">
+            <span class="text-red-brand font-semibold">Email:</span> contato@tiplease.com
+        </li>
+        <li class="flex items-center gap-2">
+            <span class="text-red-brand font-semibold">WhatsApp:</span> (11) 9999-9999
+        </li>
+        <li class="flex items-center gap-2">
+            <span class="text-red-brand font-semibold">Local:</span> Salvador-BA, Brasil
+        </li>
+    </ul>
+
+    <h5 class="text-white font-bold uppercase tracking-widest mb-6">Redes Sociais e Afiliados:</h5>
+    
+    <ul class="flex flex-wrap gap-3">
+        <li class="transition-transform hover:scale-110">
+            <a target="_blank" href="https://github.com/UelintonSantos">
+                <img src="./img/github.png" alt="GitHub" class="w-[30px] h-[30px] object-contain" />
+            </a>
+        </li>
+        <li class="transition-transform hover:scale-110">
+            <a target="_blank" href="https://www.instagram.com/">
+                <img src="./img/instagram2.png" alt="Instagram" class="w-[30px] h-[30px] object-contain" />
+            </a>
+        </li>
+        <li class="transition-transform hover:scale-110">
+            <a target="_blank" href="https://www.facebook.com/profile.php?id=100063485170953">
+                <img src="./img/facebook1.png" alt="Facebook" class="w-[30px] h-[30px] object-contain" />
+            </a>
+        </li>
+        <li class="transition-transform hover:scale-110">
+            <a target="_blank" href="https://www.youtube.com/channel/UC6tMlW_MTknvrZybAMq9TYg">
+                <img src="./img/Youtube2.png" alt="YouTube" class="w-[30px] h-[30px] object-contain" />
+            </a>
+        </li>
+        <li class="transition-transform hover:scale-110">
+            <a target="_blank" href="https://rumble.com/c/c-2287590?duration=long/">
+                <img src="./img/rumble.png" alt="Rumble" class="w-[30px] h-[30px] object-contain" />
+            </a>
+        </li>
+        <li class="transition-transform hover:scale-110">
+            <a target="_blank" href="https://www.tiktok.com/@uelinton.s?lang=pt-BR">
+                <img src="./img/tiktok2.png" alt="TikTok" class="w-[30px] h-[30px] object-contain" />
+            </a>
+        </li>
+        <li class="transition-transform hover:scale-110">
+            <a target="_blank" href="https://x.com/PleaseTi">
+                <img src="./img/TWITTE.png" alt="X (Twitter)" class="w-[30px] h-[30px] object-contain" />
+            </a>
+        </li>
+        <li class="transition-transform hover:scale-110">
+            <a target="_blank" href="https://br.linkedin.com/in/uelinton-queiroz-dos-santos-96404b4a">
+                <img src="./img/linkedin.png" alt="LinkedIn" class="w-[30px] h-[30px] object-contain" />
+            </a>
+        </li>
+        <li class="transition-transform hover:scale-110">
+            <a target="_blank" href="https://web.whatsapp.com/">
+                <img src="./img/whatsapp.jpg" alt="WhatsApp" class="w-[30px] h-[30px] object-contain rounded-sm" />
+            </a>
+        </li>
+          <li class="transition-transform hover:scale-110">
+            <a target="_blank" href="https://www.mercadolivre.com.br/afiliados/hub#menu-user">
+                <img src="./img/mercadolivre.jpeg" alt="mercadolivre.jpeg" class="w-[30px] h-[30px] object-contain rounded-sm" />
+            </a>
+        </li>
+    </ul>
+</div>
+            <ul>
+            </div>
+            <div class="flex flex-col md:flex-row justify-between items-center text-zinc-600 text-sm gap-4">
+                <p>&copy; <span id="year"></span> TI.PLEASE - Todos os direitos reservados.</p>
+                <div class="flex gap-6">
+                    <a href="#" class="hover:text-white transition-colors">Política de Privacidade</a>
+                    <a href="#" class="hover:text-white transition-colors">Termos de Uso</a>
+                </div>
+                </ul>
+            </div>
+    </footer>
+
+    <!-- Logic Script -->
+    <script type="module">
+        import { GoogleGenAI } from "@google/genai";
+
+       // Configuration
+const SERVICES_DATA = [
+    { code: '01', name: 'Criação de Site e Aplicativo', description: 'Desenvolvemos sua presença digital completa.' },
+    { code: '02', name: 'Criação de QR Code', description: 'Criação de forma de pagamento mais utilizado no modelo atual.' },
+    { code: '03', name: 'Solicitação de Peças', description: 'Reposição de hardware com agilidade, pedidos de peças.' },
+    { code: '04', name: 'Infraestrutura de Rede', description: 'Cabeamento estruturado e conectividade.' },
+    { code: '05', name: 'Segurança de Dados', description: 'Firewalls, backups, recuperação de arquivos, desbloqueio de senha, criação de dois fatores para: e-mail, chip, pin e antivírus corporativos.' },
+    { code: '06', name: 'Manutenção Preventiva', description: 'Limpeza técnica, formatação em equipamentos, e otimização de sistemas.' },
+    { code: '07', name: 'Consultoria de TI', description: 'Análise estratégica para redução de custos.' },
+    { code: '08', name: 'Cloud Computing', description: 'Criação de servidor, migração de servidores locais para a nuvem.' },
+    { code: '09', name: 'Suporte Remoto 24/7', description: 'Atendimento imediato para software.' }, // Adicionada vírgula aqui
+    { code: '10', name: 'Instalação de Programas', description: 'Pacote office, adobe pdf, navegadores, drives e outros.' }, // Adicionada vírgula aqui
+    { code: '11', name: 'Instalação de Equipamentos', description: 'Instalação de impressora, inscaner, câmera, web cam, e outros.' }, // Adicionada vírgula aqui
+    { code: '12', name: 'Automação de Casa Inteligente', description: 'Planejamento, instalação de equipamentos inteligentes, para ajudar nos serviços do dia a dia.' }, // Adicionada vírgula aqui
+    { code: '13', name: 'Monitoramento', description: 'Serviço de monitoração da infraestrutura de rede, utilizando o zabbix, grafana e outros.' }
+];
+        // Mobile Menu Logic
+        const mobileBtn = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Search Table Logic
+        const searchInput = document.getElementById('service-search');
+        const tableBody = document.querySelector('#services-table tbody');
+
+        const renderServices = (filter = '') => {
+            tableBody.innerHTML = '';
+            const filtered = SERVICES_DATA.filter(s => 
+                s.name.toLowerCase().includes(filter.toLowerCase()) || 
+                s.description.toLowerCase().includes(filter.toLowerCase())
+            );
+            
+            filtered.forEach(s => {
+                const row = `
+                    <tr class="bg-white hover:bg-zinc-50 transition-colors group border-b border-zinc-100">
+                        <td class="p-4 align-top">
+                            <span class="bg-black group-hover:bg-red-600 transition-colors text-white px-2 py-1 font-bold text-xs rounded">${s.code}</span>
+                        </td>
+                        <td class="p-4 align-top font-bold text-zinc-900">${s.name}</td>
+                        <td class="p-4 text-zinc-500 leading-relaxed hidden md:table-cell text-sm">${s.description}</td>
+                    </tr>
+                `;
+                tableBody.insertAdjacentHTML('beforeend', row);
+            });
+        };
+        renderServices();
+        searchInput.addEventListener('input', (e) => renderServices(e.target.value));
+
+        // Gemini AI Chat Logic
+        const chatInput = document.getElementById('chat-input');
+        const chatSend = document.getElementById('chat-send');
+        const chatMessages = document.getElementById('chat-messages');
+        const typingIndicator = document.getElementById('typing-indicator');
+
+        const ai = new GoogleGenAI({ apiKey: "YOUR_API_KEY_OR_PROCESS_ENV_PLACEHOLDER" });
+        // Since process.env.API_KEY is available in the platform, we use it directly:
+        const genAI = new GoogleGenAI({ apiKey: window.process?.env?.API_KEY || '' });
+
+        const addMessage = (text, role) => {
+            const div = document.createElement('div');
+            div.className = `flex ${role === 'user' ? 'justify-end' : 'justify-start'}`;
+            div.innerHTML = `
+                <div class="${role === 'user' ? 'bg-red-600 text-white rounded-tr-none' : 'bg-zinc-700 text-white rounded-tl-none'} p-4 rounded-2xl text-sm max-w-[80%] shadow-lg">
+                    ${text}
+                </div>
+            `;
+            chatMessages.appendChild(div);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        };
+
+        const handleChat = async () => {
+            const message = chatInput.value.trim();
+            if (!message) return;
+
+            addMessage(message, 'user');
+            chatInput.value = '';
+            typingIndicator.classList.remove('hidden');
+
+            try {
+                const response = await genAI.models.generateContent({
+                    model: 'gemini-3-flash-preview',
+                    contents: message,
+                    config: {
+                        systemInstruction: "Você é o Especialista Virtual da TI.PLEASE. Responda de forma profissional e técnica em português sobre infraestrutura de TI, redes e hardware. Seja conciso."
+                    }
+                });
+                
+                typingIndicator.classList.add('hidden');
+                addMessage(response.text, 'model');
+            } catch (error) {
+                typingIndicator.classList.add('hidden');
+                addMessage("Desculpe, estou com dificuldades técnicas. Tente novamente em instantes.", 'model');
+            }
+        };
+
+        chatSend.addEventListener('click', handleChat);
+        chatInput.addEventListener('keydown', (e) => e.key === 'Enter' && handleChat());
+
+        // Footer Year
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
