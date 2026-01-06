@@ -393,111 +393,104 @@
     </footer>
 
     <!-- Logic Script -->
-    <script type="module">
-        import { GoogleGenAI } from "@google/genai";
+   <script type="module">
+    import { GoogleGenAI } from "@google/genai";
 
-       // Configuration
-const SERVICES_DATA = [
-    { code: '01', name: 'Criação de Site e Aplicativo', description: 'Desenvolvemos sua presença digital completa.' },
-    { code: '02', name: 'Criação de QR Code', description: 'Criação de forma de pagamento mais utilizado no modelo atual.' },
-    { code: '03', name: 'Solicitação de Peças', description: 'Reposição de hardware com agilidade, pedidos de peças.' },
-    { code: '04', name: 'Infraestrutura de Rede', description: 'Cabeamento estruturado e conectividade.' },
-    { code: '05', name: 'Segurança de Dados', description: 'Firewalls, backups, recuperação de arquivos, desbloqueio de senha, criação de dois fatores para: e-mail, chip, pin e antivírus corporativos.' },
-    { code: '06', name: 'Manutenção Preventiva', description: 'Limpeza técnica, formatação em equipamentos, e otimização de sistemas.' },
-    { code: '07', name: 'Consultoria de TI', description: 'Análise estratégica para redução de custos.' },
-    { code: '08', name: 'Cloud Computing', description: 'Criação de servidor, migração de servidores locais para a nuvem.' },
-    { code: '09', name: 'Suporte Remoto 24/7', description: 'Atendimento imediato para software.' }, // Adicionada vírgula aqui
-    { code: '10', name: 'Instalação de Programas', description: 'Pacote office, adobe pdf, navegadores, drives e outros.' }, // Adicionada vírgula aqui
-    { code: '11', name: 'Instalação de Equipamentos', description: 'Instalação de impressora, inscaner, câmera, web cam, e outros.' }, // Adicionada vírgula aqui
-    { code: '12', name: 'Automação de Casa Inteligente', description: 'Planejamento, instalação de equipamentos inteligentes, para ajudar nos serviços do dia a dia.' }, // Adicionada vírgula aqui
-    { code: '13', name: 'Monitoramento', description: 'Serviço de monitoração da infraestrutura de rede, utilizando o zabbix, grafana e outros.' }
-];
-        // Mobile Menu Logic
-        const mobileBtn = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        mobileBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
+    const SERVICES_DATA = [
+        { code: '01', name: 'Criação de Site e Aplicativo', description: 'Desenvolvemos sua presença digital completa.' },
+        { code: '02', name: 'Criação de QR Code', description: 'Criação de forma de pagamento mais utilizado.' },
+        { code: '03', name: 'Solicitação de Peças', description: 'Reposição de hardware com agilidade.' },
+        { code: '04', name: 'Infraestrutura de Rede', description: 'Cabeamento estruturado e conectividade.' },
+        { code: '05', name: 'Segurança de Dados', description: 'Firewalls, backups e proteção de dados.' },
+        { code: '06', name: 'Manutenção Preventiva', description: 'Limpeza técnica e otimização.' },
+        { code: '07', name: 'Consultoria de TI', description: 'Análise estratégica para redução de custos.' },
+        { code: '08', name: 'Cloud Computing', description: 'Migração de servidores para a nuvem.' },
+        { code: '09', name: 'Suporte Remoto 24/7', description: 'Atendimento imediato para software.' },
+        { code: '10', name: 'Instalação de Programas', description: 'Pacote office, navegadores e drives.' },
+        { code: '11', name: 'Instalação de Equipamentos', description: 'Impressoras, câmeras e periféricos.' },
+        { code: '12', name: 'Automação Inteligente', description: 'Planejamento de Smart Home.' },
+        { code: '13', name: 'Monitoramento', description: 'Zabbix, Grafana e monitoração em tempo real.' }
+    ];
+
+    // Mobile Menu
+    const mobileBtn = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileBtn?.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+    // Render Table
+    const searchInput = document.getElementById('service-search');
+    const tableBody = document.querySelector('#services-table tbody');
+
+    const renderServices = (filter = '') => {
+        if(!tableBody) return;
+        tableBody.innerHTML = '';
+        const filtered = SERVICES_DATA.filter(s => 
+            s.name.toLowerCase().includes(filter.toLowerCase()) || 
+            s.description.toLowerCase().includes(filter.toLowerCase())
+        );
+        
+        filtered.forEach(s => {
+            const row = `
+                <tr class="bg-white hover:bg-zinc-50 transition-colors group border-b border-zinc-100">
+                    <td class="p-4 align-top"><span class="bg-black group-hover:bg-red-600 text-white px-2 py-1 font-bold text-xs rounded">${s.code}</span></td>
+                    <td class="p-4 align-top font-bold text-zinc-900">${s.name}</td>
+                    <td class="p-4 text-zinc-500 hidden md:table-cell text-sm">${s.description}</td>
+                </tr>`;
+            tableBody.insertAdjacentHTML('beforeend', row);
         });
+    };
+    renderServices();
+    searchInput?.addEventListener('input', (e) => renderServices(e.target.value));
 
-        // Search Table Logic
-        const searchInput = document.getElementById('service-search');
-        const tableBody = document.querySelector('#services-table tbody');
+    // Gemini AI Chat
+    const chatInput = document.getElementById('chat-input');
+    const chatSend = document.getElementById('chat-send');
+    const chatMessages = document.getElementById('chat-messages');
+    const typingIndicator = document.getElementById('typing-indicator');
 
-        const renderServices = (filter = '') => {
-            tableBody.innerHTML = '';
-            const filtered = SERVICES_DATA.filter(s => 
-                s.name.toLowerCase().includes(filter.toLowerCase()) || 
-                s.description.toLowerCase().includes(filter.toLowerCase())
-            );
-            
-            filtered.forEach(s => {
-                const row = `
-                    <tr class="bg-white hover:bg-zinc-50 transition-colors group border-b border-zinc-100">
-                        <td class="p-4 align-top">
-                            <span class="bg-black group-hover:bg-red-600 transition-colors text-white px-2 py-1 font-bold text-xs rounded">${s.code}</span>
-                        </td>
-                        <td class="p-4 align-top font-bold text-zinc-900">${s.name}</td>
-                        <td class="p-4 text-zinc-500 leading-relaxed hidden md:table-cell text-sm">${s.description}</td>
-                    </tr>
-                `;
-                tableBody.insertAdjacentHTML('beforeend', row);
+    // Substitua pela sua chave real ou variável de ambiente
+    const API_KEY = "SUA_API_KEY_AQUI"; 
+    const genAI = new GoogleGenAI(API_KEY);
+
+    const addMessage = (text, role) => {
+        const div = document.createElement('div');
+        div.className = `flex ${role === 'user' ? 'justify-end' : 'justify-start'}`;
+        div.innerHTML = `<div class="${role === 'user' ? 'bg-red-600' : 'bg-zinc-700'} p-4 rounded-2xl ${role === 'user' ? 'rounded-tr-none' : 'rounded-tl-none'} text-sm max-w-[80%] shadow-lg text-white">${text}</div>`;
+        chatMessages.appendChild(div);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    };
+
+    const handleChat = async () => {
+        const message = chatInput.value.trim();
+        if (!message) return;
+
+        addMessage(message, 'user');
+        chatInput.value = '';
+        typingIndicator.classList.remove('hidden');
+
+        try {
+            // Forma correta de chamar o modelo
+            const model = genAI.getGenerativeModel({ 
+                model: "gemini-1.5-flash",
+                systemInstruction: "Você é o Especialista Virtual da TI.PLEASE. Responda de forma profissional sobre TI em português." 
             });
-        };
-        renderServices();
-        searchInput.addEventListener('input', (e) => renderServices(e.target.value));
 
-        // Gemini AI Chat Logic
-        const chatInput = document.getElementById('chat-input');
-        const chatSend = document.getElementById('chat-send');
-        const chatMessages = document.getElementById('chat-messages');
-        const typingIndicator = document.getElementById('typing-indicator');
+            const result = await model.generateContent(message);
+            const response = await result.response;
+            
+            typingIndicator.classList.add('hidden');
+            addMessage(response.text(), 'model');
+        } catch (error) {
+            console.error(error);
+            typingIndicator.classList.add('hidden');
+            addMessage("Erro ao conectar com a IA. Verifique sua chave de API.", 'model');
+        }
+    };
 
-        const ai = new GoogleGenAI({ apiKey: "YOUR_API_KEY_OR_PROCESS_ENV_PLACEHOLDER" });
-        // Since process.env.API_KEY is available in the platform, we use it directly:
-        const genAI = new GoogleGenAI({ apiKey: window.process?.env?.API_KEY || '' });
-
-        const addMessage = (text, role) => {
-            const div = document.createElement('div');
-            div.className = `flex ${role === 'user' ? 'justify-end' : 'justify-start'}`;
-            div.innerHTML = `
-                <div class="${role === 'user' ? 'bg-red-600 text-white rounded-tr-none' : 'bg-zinc-700 text-white rounded-tl-none'} p-4 rounded-2xl text-sm max-w-[80%] shadow-lg">
-                    ${text}
-                </div>
-            `;
-            chatMessages.appendChild(div);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-        };
-
-        const handleChat = async () => {
-            const message = chatInput.value.trim();
-            if (!message) return;
-
-            addMessage(message, 'user');
-            chatInput.value = '';
-            typingIndicator.classList.remove('hidden');
-
-            try {
-                const response = await genAI.models.generateContent({
-                    model: 'gemini-3-flash-preview',
-                    contents: message,
-                    config: {
-                        systemInstruction: "Você é o Especialista Virtual da TI.PLEASE. Responda de forma profissional e técnica em português sobre infraestrutura de TI, redes e hardware. Seja conciso."
-                    }
-                });
-                
-                typingIndicator.classList.add('hidden');
-                addMessage(response.text, 'model');
-            } catch (error) {
-                typingIndicator.classList.add('hidden');
-                addMessage("Desculpe, estou com dificuldades técnicas. Tente novamente em instantes.", 'model');
-            }
-        };
-
-        chatSend.addEventListener('click', handleChat);
-        chatInput.addEventListener('keydown', (e) => e.key === 'Enter' && handleChat());
-
-        // Footer Year
-        document.getElementById('year').textContent = new Date().getFullYear();
+    chatSend?.addEventListener('click', handleChat);
+    chatInput?.addEventListener('keydown', (e) => e.key === 'Enter' && handleChat());
+    document.getElementById('year').textContent = new Date().getFullYear();
+</script>
     </script>
 </body>
 </html>
