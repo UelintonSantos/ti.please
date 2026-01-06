@@ -33,12 +33,12 @@
     </style>
 <script type="importmap">
 {
-  "imports": {
+"imports": {
     "react": "https://esm.sh/react@^19.2.3",
     "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
     "react/": "https://esm.sh/react@^19.2.3/",
     "@google/genai": "https://esm.sh/@google/genai@^1.34.0"
-  }
+}
 }
 </script>
 </head>
@@ -115,7 +115,7 @@
         </div>
         </section>
 
-         <!-- Services Section -->
+        <!-- Services Section -->
     <section id="informacao" class="py-24 bg-zinc-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-20">
@@ -184,15 +184,18 @@
                             </table>
                         </div>
                     </div>
-                    <div class="w-full lg:w-1/3 flex flex-col gap-6">
-                        <div className="bg-red-600 p-8 text-white rounded-lg shadow-lg bg-red-600 text-white p-8 rounded-lg">
-                            <h4 class="font-bold text-xl mb-2 italic">Precisa de ajuda agora?</h4>
-                            <p class="text-white/80 text-sm mb-6">Nossa IA está pronta para diagnosticar sua infraestrutura em segundos.</p>
-                            <a href="#consultor" class="inline-block bg-zinc-900 text-white px-8 py-3 text-xs font-bold uppercase tracking-widest hover:bg-black transition-colors">Iniciar Chat</a>
-                        </div>
-                        <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&q=80" class="rounded-lg h-48 w-full object-cover">
-                    </div>
-                </div>
+                <div class="w-full lg:w-1/3 flex flex-col gap-8">
+<div class="bg-red-600 p-12 text-white rounded-2xl shadow-2xl relative overflow-hidden group border border-red-500">
+    <div class="absolute -right-16 -top-16 w-48 h-48 bg-white/10 rounded-full group-hover:scale-125 transition-transform duration-700"></div>
+    <h4 class="font-bold text-3xl mb-6 italic uppercase tracking-tighter leading-none">Precisa de ajuda agora?</h4>
+    <p class="text-white/90 text-md mb-10 leading-relaxed font-light">
+    Nossa IA está pronta para diagnosticar sua infraestrutura e tirar dúvidas técnicas em segundos.
+    </p>
+    <a href="#consultor" class="inline-block bg-zinc-900 text-white px-10 py-5 text-xs font-bold uppercase tracking-widest hover:bg-black transition-all shadow-2xl hover:scale-105">
+    Iniciar Consultoria
+    </a>
+</div>
+</div> 
             </div>
         </section>
 
@@ -235,7 +238,7 @@
             </div>
         </section>
 
-         <!-- Gallery Section -->
+        <!-- Gallery Section -->
     <section id="foto" class="py-24 bg-zinc-950 text-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
@@ -275,13 +278,13 @@
     <!-- Video Placeholder Section (opcional, baseada no menu) -->
     <section id="video" class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-             <div class="bg-black rounded-sm p-12 text-center text-white">
-                 <h2 class="text-3xl font-bold mb-6 italic">ACOMPANHE NOSSO CANAL</h2>
-                 <p class="text-zinc-400 mb-8 max-w-xl mx-auto">Em nosso canal damos dicas de manutenção, infraestrutura, segurança e muito mais.</p>
-                 
+            <div class="bg-black rounded-sm p-12 text-center text-white">
+                <h2 class="text-3xl font-bold mb-6 italic">ACOMPANHE NOSSO CANAL</h2>
+                <p class="text-zinc-400 mb-8 max-w-xl mx-auto">Em nosso canal damos dicas de manutenção, infraestrutura, segurança e muito mais.</p>
+                
 
                 <button> 
-                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 justify-items-center"><!-- AQUI FICA O VÍDEO 01 --> 
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 justify-items-center"><!-- AQUI FICA O VÍDEO 01 --> 
     <div class="aspect-video w-full">
         <iframe class="w-full h-full border-4 border-red-brand" src="https://www.youtube.com/embed/nzV98k91uqo?si=xscuyrLJpjwAce1Q" frameborder="0" allowfullscreen></iframe>
     </div>              
@@ -290,12 +293,12 @@
     </div>
 </div>               
 </button>
- </div>
+</div>
 </div>                
     </section>
     </main>
 
-     <!-- Footer -->
+    <!-- Footer -->
     <footer class="bg-black text-white pt-20 pb-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16 border-b border-zinc-900 pb-16">
@@ -370,7 +373,7 @@
                 <img src="./whatsapp.jpg" alt="WhatsApp" class="w-[30px] h-[30px] object-contain rounded-sm" />
             </a>
         </li>
-          <li class="transition-transform hover:scale-110">
+        <li class="transition-transform hover:scale-110">
             <a target="_blank" href="https://www.mercadolivre.com.br/afiliados/hub#menu-user">
                 <img src="./mercadolivre.jpeg" alt="mercadolivre.jpeg" class="w-[30px] h-[30px] object-contain rounded-sm" />
             </a>
