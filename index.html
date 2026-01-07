@@ -32,16 +32,14 @@
         .dot-animate { animation: bounce-custom 0.6s infinite; }
     </style>
 <script type="importmap">
-// vite.config.js
-import { defineConfig } from 'vite'
-
-export default defineConfig({
-  build: {
-    rollupOptions: {
-      external: ['@google/genai']
-    }
-  }
-})
+// functions/genai.js
+import {GenAIClient} from '@google/genai'; // or the correct server-side import
+export async function handler(event, context) {
+  // use process.env.GENAI_API_KEY (set in Netlify UI)
+  const client = new GenAIClient({ apiKey: process.env.GENAI_API_KEY });
+  const result = await client.generate(...);
+  return { statusCode: 200, body: JSON.stringify(result) };
+}
 </script>
 </head>
 <body class="antialiased selection:bg-red-600 selection:text-white">
