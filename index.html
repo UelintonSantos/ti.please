@@ -6,6 +6,7 @@
     <title>TI.PLEASE - Construindo o Futuro com Solidez</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -47,8 +48,35 @@
         #mobile-menu.active {
             max-height: 400px;
         }
+
+        /* Scrollbar Customizada */
+        .table-scroll-container::-webkit-scrollbar {
+            width: 6px;
+        }
+        .table-scroll-container::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .table-scroll-container::-webkit-scrollbar-thumb {
+            background: #d1d5db;
+            border-radius: 10px;
+        }
+        .table-scroll-container::-webkit-scrollbar-thumb:hover {
+            background: #e40202;
+        }
+
+        /* Cod Badge */
+        .cod-badge {
+            background-color: #000;
+            color: #fff;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: 800;
+            font-size: 0.75rem;
+            display: inline-block;
+            min-width: 32px;
+            text-align: center;
+        }
     </style>
-<link rel="stylesheet" href="/index.css">
 </head>
 <body class="antialiased">
 
@@ -65,7 +93,8 @@
                 <!-- Desktop Nav -->
                 <nav class="hidden md:flex space-x-10">
                     <a href="#home" class="nav-link text-sm font-semibold uppercase tracking-wider">Home</a>
-                    <a href="#informacao" class="nav-link text-sm font-semibold uppercase tracking-wider">Informação</a>
+                    <a href="#informacao" class="nav-link text-sm font-semibold uppercase tracking-wider">Serviços</a>
+                    <a href="#servicos" class="nav-link text-sm font-semibold uppercase tracking-wider">Lista</a>
                     <a href="#foto" class="nav-link text-sm font-semibold uppercase tracking-wider">Foto</a>
                     <a href="#video" class="nav-link text-sm font-semibold uppercase tracking-wider">Vídeo</a>
                 </nav>
@@ -85,7 +114,8 @@
         <div id="mobile-menu" class="md:hidden bg-black border-t border-zinc-800">
             <div class="px-6 py-4 space-y-4">
                 <a href="#home" class="block text-base font-medium border-b border-zinc-900 pb-2">Home</a>
-                <a href="#informacao" class="block text-base font-medium border-b border-zinc-900 pb-2">Informação</a>
+                <a href="#informacao" class="block text-base font-medium border-b border-zinc-900 pb-2">Serviços</a>
+                <a href="#servicos" class="block text-base font-medium border-b border-zinc-900 pb-2">Lista</a>
                 <a href="#foto" class="block text-base font-medium border-b border-zinc-900 pb-2">Foto</a>
                 <a href="#video" class="block text-base font-medium">Vídeo</a>
             </div>
@@ -107,11 +137,10 @@
             <p class="mt-8 text-lg md:text-xl text-zinc-300 font-light max-w-2xl mx-auto leading-relaxed">
                 Tecnologia e infraestrutura pensadas para levar seu negócio ao próximo nível com total segurança, performance e eficiência.
             </p>
-            
         </div>
     </section>
 
-    <!-- Services Section -->
+    <!-- Brief Services Summary -->
     <section id="informacao" class="py-24 bg-zinc-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-20">
@@ -120,34 +149,25 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-                <!-- Card 1 -->
                 <div class="bg-white p-10 custom-shadow border-t-8 border-black hover:border-red-brand transition-all group rounded-sm">
                     <div class="w-16 h-16 bg-zinc-100 flex items-center justify-center mb-8 group-hover:bg-red-brand transition-colors rounded-sm">
-                        <svg class="w-8 h-8 text-red-brand group-hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                        </svg>
+                        <i class="fa-solid fa-screwdriver-wrench text-2xl text-red-brand group-hover:text-white"></i>
                     </div>
                     <h3 class="text-2xl font-bold mb-4">Manutenção</h3>
                     <p class="text-zinc-600 leading-relaxed font-light">Suporte técnico especializado para garantir que seus equipamentos operem em máxima performance.</p>
                 </div>
 
-                <!-- Card 2 -->
                 <div class="bg-white p-10 custom-shadow border-t-8 border-black hover:border-red-brand transition-all group rounded-sm">
                     <div class="w-16 h-16 bg-zinc-100 flex items-center justify-center mb-8 group-hover:bg-red-brand transition-colors rounded-sm">
-                        <svg class="w-8 h-8 text-red-brand group-hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                        </svg>
+                        <i class="fa-solid fa-shield-halved text-2xl text-red-brand group-hover:text-white"></i>
                     </div>
                     <h3 class="text-2xl font-bold mb-4">Segurança</h3>
                     <p class="text-zinc-600 leading-relaxed font-light">Implementação de firewalls, antivírus corporativos e protocolos de proteção de dados críticos.</p>
                 </div>
 
-                <!-- Card 3 -->
                 <div class="bg-white p-10 custom-shadow border-t-8 border-black hover:border-red-brand transition-all group rounded-sm">
                     <div class="w-16 h-16 bg-zinc-100 flex items-center justify-center mb-8 group-hover:bg-red-brand transition-colors rounded-sm">
-                        <svg class="w-8 h-8 text-red-brand group-hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                        </svg>
+                        <i class="fa-solid fa-chart-line text-2xl text-red-brand group-hover:text-white"></i>
                     </div>
                     <h3 class="text-2xl font-bold mb-4">Monitoramento</h3>
                     <p class="text-zinc-600 leading-relaxed font-light">Acompanhamento em tempo real da sua rede para detecção proativa de anomalias.</p>
@@ -156,48 +176,57 @@
         </div>
     </section>
 
-    <!-- Services Table & Search / Aqui faz parte da lista de serviços -->
-        <section id="servicos" class="py-32 bg-white">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex flex-col lg:flex-row gap-20">
-                    <div class="w-full lg:w-2/3">
-                        <h2 class="text-5xl font-extrabold mb-8 uppercase tracking-tighter">
-                            NOSSOS <span class="text-red-600">SERVIÇOS</span>
-                        </h2>
-                        <div class="relative mb-8">
-                            <input 
-                                type="text" 
-                                id="service-search"
-                                placeholder="O que você está procurando?" 
-                                class="w-full pl-6 pr-14 py-5 border-2 border-zinc-100 rounded-xl focus:border-red-600 outline-none transition-all shadow-sm bg-zinc-50 text-lg">
-                            <div class="absolute right-6 top-1/2 -translate-y-1/2 text-zinc-400">
-                                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                                </svg>
-                            </div>
-                        </div>
-                         <!-- Faz parte da lista de serviços -->
-                        <div class="table-scroll-container max-h-[600px] overflow-y-auto border border-zinc-200 rounded-xl shadow-inner bg-zinc-50">
-                            <table id="services-table" class="w-full text-left border-collapse">
-                                <thead class="bg-black text-white sticky top-0 z-10">
-                                    <tr>
-                                        <th class="p-5 uppercase text-[11px] font-bold tracking-widest w-24">Cod</th>
-                                        <th class="p-5 uppercase text-[11px] font-bold tracking-widest">Serviço</th>
-                                        <th class="p-5 uppercase text-[11px] font-bold tracking-widest hidden md:table-cell">Descrição</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="table-body" class="divide-y divide-zinc-200 bg-white">
-                                    <!-- Dynamic rows from JS -->
-                                </tbody>
-                            </table>
+    <!-- Services Table Section -->
+    <section id="servicos" class="py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row gap-16">
+                <div class="w-full lg:w-2/3">
+                    <h2 class="text-4xl md:text-5xl font-extrabold mb-8 uppercase tracking-tighter">
+                        NOSSOS <span class="text-red-brand">SERVIÇOS</span>
+                    </h2>
+                    
+                    <!-- Search Bar -->
+                    <div class="relative mb-8">
+                        <input 
+                            type="text" 
+                            id="service-search"
+                            placeholder="O que você está procurando?" 
+                            class="w-full pl-6 pr-14 py-5 border-2 border-zinc-100 rounded-xl focus:border-red-brand outline-none transition-all shadow-sm bg-zinc-50 text-lg">
+                        <div class="absolute right-6 top-1/2 -translate-y-1/2 text-zinc-400">
+                            <i class="fa-solid fa-magnifying-glass text-xl"></i>
                         </div>
                     </div>
-                 <!-- As duais imagens que fica do lado direito da lista de serviços. --> 
-                <div class="w-full lg:w-1/2 grid grid-cols-2 gap-4">
-                    <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&q=80" alt="Hardware" class="rounded-sm shadow-xl h-64 w-full object-cover transform hover:scale-105 transition-transform duration-500">    
 
-                    <img src="https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&q=80" alt="Hardware" class="rounded-sm shadow-xl h-64 w-full object-cover transform hover:scale-105 transition-transform duration-500">
+                    <!-- Table Container -->
+                    <div class="table-scroll-container max-h-[500px] overflow-y-auto border border-zinc-200 rounded-xl shadow-lg bg-white">
+                        <table class="w-full text-left border-collapse">
+                            <thead class="bg-black text-white sticky top-0 z-10">
+                                <tr>
+                                    <th class="p-5 uppercase text-[11px] font-bold tracking-widest w-24">Cod</th>
+                                    <th class="p-5 uppercase text-[11px] font-bold tracking-widest">Serviço</th>
+                                    <th class="p-5 uppercase text-[11px] font-bold tracking-widest hidden md:table-cell">Descrição</th>
+                                </tr>
+                            </thead>
+                            <tbody id="table-body" class="divide-y divide-zinc-100">
+                                <!-- Data populated by JS -->
+                            </tbody>
+                        </table>
+                        <div id="no-results" class="hidden p-10 text-center text-zinc-500 italic">
+                            Nenhum serviço encontrado.
+                        </div>
+                    </div>
                 </div>
+
+                <!-- As duais imagens que fica do lado direito da lista de serviços. --> 
+                 <div class="w-full lg:w-1/3 flex flex-col gap-6 justify-center">
+                    <div class="relative group overflow-hidden rounded-xl shadow-xl">
+                        <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&q=80" alt="Hardware" class="h-64 w-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors"></div>
+                    </div>
+                    <div class="relative group overflow-hidden rounded-xl shadow-xl">
+                        <img src="https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&q=80" alt="Server Room" class="h-64 w-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors"></div>
+                    </div>
             </div>
         </div>
     </section>
@@ -225,7 +254,7 @@
                         <img src="./RACKE01.jpg" alt="Data Center" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 opacity-60 group-hover:opacity-100">
                         <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
                         <div class="absolute bottom-8 left-8 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
-                            <h4 class="text-white font-bold uppercase tracking-widest text-sm">Data Center Core</h4>
+                            <h4 class="text-white font-bold uppercase tracking-widest text-sm">organização na Infraestrutura de Rede</h4>
                             <div class="h-1.5 w-10 bg-red-600 mt-3 rounded-full"></div>
                         </div>
                     </div>
@@ -233,7 +262,7 @@
                         <img src="./grafana.PNG" alt="Monitoring" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 opacity-60 group-hover:opacity-100">
                         <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
                         <div class="absolute bottom-8 left-8 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
-                            <h4 class="text-white font-bold uppercase tracking-widest text-sm">Monitoramento Real-time</h4>
+                            <h4 class="text-white font-bold uppercase tracking-widest text-sm">Monitoramento</h4>
                             <div class="h-1.5 w-10 bg-red-600 mt-3 rounded-full"></div>
                         </div>
                     </div>
@@ -241,7 +270,7 @@
                         <img src="./pcdo usuário01.jpg" alt="Support" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 opacity-60 group-hover:opacity-100">
                         <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
                         <div class="absolute bottom-8 left-8 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
-                            <h4 class="text-white font-bold uppercase tracking-widest text-sm">Suporte Proativo</h4>
+                            <h4 class="text-white font-bold uppercase tracking-widest text-sm">instalação de Equipamentos</h4>
                             <div class="h-1.5 w-10 bg-red-600 mt-3 rounded-full"></div>
                         </div>
                     </div>
@@ -321,7 +350,7 @@
     </ul>
 
      <!--Redes Sociais do Site-->
-    <h5 class="text-white font-bold uppercase tracking-widest mb-6">Redes Sociais e Filiados:</h5>
+    <h5 class="text-white font-bold uppercase tracking-widest mb-6">Redes Sociais e Afiliados:</h5>
     
     <ul class="flex flex-wrap gap-3">
         <li class="transition-transform hover:scale-110">
@@ -387,103 +416,79 @@
                 </ul>
             </div>
     </footer>
-
     <!-- JavaScript para Funcionalidade -->
-   <script type="importmap">
-    {
-        "imports": {
-            "@google/genai": "https://esm.run/@google/genai"
-        }
-    }
-    </script>
-    <script type="module">
-        import { GoogleGenAI } from "@google/genai";
-
-        // 1. Dados dos Serviços
+    <script>
+        // 1. Data Source / Lista dos Serviços
         const SERVICES_DATA = [
-            { code: '01', name: 'Criação de Site e Aplicativo', description: 'Desenvolvemos sua presença digital completa.' },
+             { code: '01', name: 'Criação de Site e Aplicativo', description: 'Desenvolvemos sua presença digital completa.' },
             { code: '02', name: 'Criação de QR Code', description: 'Forma de pagamento moderna.' },
             { code: '03', name: 'Solicitação de Peças', description: 'Reposição ágil de hardware.' },
             { code: '04', name: 'Infraestrutura de Rede', description: 'Cabeamento e conectividade.' },
             { code: '05', name: 'Segurança de Dados', description: 'Firewalls e backups.' },
             { code: '06', name: 'Manutenção Preventiva', description: 'Limpeza e otimização.' },
             { code: '07', name: 'Consultoria de TI', description: 'Estratégia e redução de custos.' },
-            { code: '08', name: 'Cloud Computing', description: 'Migração para nuvem.' },
-            { code: '09', name: 'Suporte Remoto 24/7', description: 'Atendimento imediato.' },
-            { code: '10', name: 'Instalação de Programas', description: 'Office, Adobe e outros.' },
-            { code: '11', name: 'Instalação de Equipamentos', description: 'Impressoras e câmeras.' },
-            { code: '12', name: 'Automação Inteligente', description: 'Smart Home e Office.' },
+            { code: '08', name: 'Criação de Servidor', description: 'Instalação de servidor interno e máquinas virtuais.' },
+            { code: '09', name: 'Suporte Remoto', description: 'Atendimento para suporte e instalação e desinstalação de programa.' },
+            { code: '10', name: 'Instalação de Programas', description: 'Office, adobe e outros.' },
+            { code: '11', name: 'Instalação de Equipamentos', description: 'Impressoras, câmera e outros.' },
+            { code: '12', name: 'Recuperação de Arquivos', description: 'Recuperação de dados.' },
             { code: '13', name: 'Monitoramento', description: 'Zabbix e Grafana.' },
-            { code: '14', name: 'Formatação', description: 'Restalação do Sistema Operacional, drivers, e Programas.' },
+            { code: '14', name: 'Formatação', description: 'Instalação do sistema operacional, drivers, e programas.' },
         ];
 
-        // 2. Menu Mobile
-        const mobileBtn = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        mobileBtn?.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
-
-        // 3. Tabela de Serviços
-        const tableBody = document.querySelector('#services-table tbody');
+        // 2. DOM Elements
+        const tableBody = document.getElementById('table-body');
         const searchInput = document.getElementById('service-search');
+        const noResults = document.getElementById('no-results');
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const yearSpan = document.getElementById('year');
 
+        // 3. Functions
         function renderTable(filter = '') {
+            const term = filter.toLowerCase().trim();
             tableBody.innerHTML = '';
+            
             const filtered = SERVICES_DATA.filter(s => 
-                s.name.toLowerCase().includes(filter.toLowerCase())
+                s.name.toLowerCase().includes(term) || 
+                s.description.toLowerCase().includes(term) ||
+                s.code.includes(term)
             );
-            filtered.forEach(s => {
-                tableBody.innerHTML += `
-                    <tr class="hover:bg-zinc-50 transition-colors">
-                        <td class="p-4"><span class="bg-black text-white px-2 py-1 text-xs rounded">${s.code}</span></td>
-                        <td class="p-4 font-bold">${s.name}</td>
-                        <td class="p-4 text-zinc-500 hidden md:table-cell">${s.description}</td>
-                    </tr>`;
-            });
-        }
-        renderTable();
-        searchInput?.addEventListener('input', (e) => renderTable(e.target.value));
 
-        // 4. Gemini AI
-        const API_KEY = "SUA_API_KEY_AQUI"; // ATENÇÃO: Use variáveis de ambiente no Netlify!
-        const genAI = new GoogleGenAI(API_KEY);
-        const chatMessages = document.getElementById('chat-messages');
-        const chatInput = document.getElementById('chat-input');
-        const typingIndicator = document.getElementById('typing-indicator');
-
-        async function handleChat() {
-            const prompt = chatInput.value.trim();
-            if(!prompt) return;
-
-            // Add user message
-            addMessage(prompt, 'user');
-            chatInput.value = '';
-            typingIndicator.classList.remove('hidden');
-
-            try {
-                const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-                const result = await model.generateContent(`Você é o especialista da TI.PLEASE. Responda em português: ${prompt}`);
-                const response = await result.response;
-                addMessage(response.text(), 'model');
-            } catch (e) {
-                addMessage("Erro ao conectar. Verifique a chave de API.", "model");
-            } finally {
-                typingIndicator.classList.add('hidden');
+            if (filtered.length === 0) {
+                noResults.classList.remove('hidden');
+            } else {
+                noResults.classList.add('hidden');
+                filtered.forEach(s => {
+                    const row = document.createElement('tr');
+                    row.className = "hover:bg-zinc-50 transition-colors group";
+                    row.innerHTML = `
+                        <td class="p-5">
+                            <span class="cod-badge group-hover:bg-red-brand transition-colors">${s.code}</span>
+                        </td>
+                        <td class="p-5 font-bold text-zinc-900 text-sm md:text-base">${s.name}</td>
+                        <td class="p-5 text-zinc-500 font-light text-sm hidden md:table-cell">${s.description}</td>
+                    `;
+                    tableBody.appendChild(row);
+                });
             }
         }
 
-        function addMessage(text, role) {
-            const side = role === 'user' ? 'justify-end' : 'justify-start';
-            const color = role === 'user' ? 'bg-red-600' : 'bg-zinc-700';
-            chatMessages.innerHTML += `
-                <div class="flex ${side}">
-                    <div class="${color} p-4 rounded-xl max-w-[80%] text-sm shadow-md">${text}</div>
-                </div>`;
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-        }
+        // 4. Event Listeners
+        searchInput.addEventListener('input', (e) => renderTable(e.target.value));
 
-        document.getElementById('chat-send').onclick = handleChat;
-        chatInput.onkeydown = (e) => e.key === 'Enter' && handleChat();
-        document.getElementById('year').textContent = new Date().getFullYear();
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.remove('active'));
+        });
+
+        // 5. Init
+        yearSpan.textContent = new Date().getFullYear();
+        renderTable();
     </script>
 </body>
 </html>
