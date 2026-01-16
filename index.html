@@ -80,7 +80,7 @@
 </head>
 <body class="antialiased">
 
-    <!-- Header -->
+    <!-- Header-Cabeçalho -->
     <header class="fixed top-0 left-0 w-full z-50 bg-black text-white shadow-2xl">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
@@ -90,7 +90,7 @@
                     </a>
                 </div>
                 
-                <!-- Desktop Nav -->
+                <!-- Desktop Nav-Navegação na área de trabalho -->
                 <nav class="hidden md:flex space-x-10">
                     <a href="#home" class="nav-link text-sm font-semibold uppercase tracking-wider">Home</a>
                     <a href="#informacao" class="nav-link text-sm font-semibold uppercase tracking-wider">Serviços</a>
@@ -99,7 +99,7 @@
                     <a href="#video" class="nav-link text-sm font-semibold uppercase tracking-wider">Vídeo</a>
                 </nav>
 
-                <!-- Mobile Toggle -->
+                <!-- Mobile Toggle-Alternar para dispositivos móveis -->
                 <div class="md:hidden flex items-center">
                     <button id="menu-btn" class="p-2 focus:outline-none">
                         <svg class="h-6 w-6 text-white transition-transform duration-300" id="menu-svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -110,7 +110,7 @@
             </div>
         </div>
 
-        <!-- Mobile Menu -->
+        <!-- Mobile Menu-Menu para dispositivos móveis -->
         <div id="mobile-menu" class="md:hidden bg-black border-t border-zinc-800">
             <div class="px-6 py-4 space-y-4">
                 <a href="#home" class="block text-base font-medium border-b border-zinc-900 pb-2">Home</a>
@@ -122,7 +122,7 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Hero Section-Seção Herói -->
     <section id="home" class="relative min-h-screen flex items-center justify-center pt-20">
         <div class="absolute inset-0 z-0">
             <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80" alt="TI Hardware" class="w-full h-full object-cover">
@@ -140,7 +140,7 @@
         </div>
     </section>
 
-    <!-- Brief Services Summary -->
+    <!-- Brief Services Summary-Resumo dos Serviços -->
     <section id="informacao" class="py-24 bg-zinc-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-20">
@@ -176,7 +176,7 @@
         </div>
     </section>
 
-    <!-- Services Table Section -->
+    <!-- Services Table Section-Seção da tabela de serviços -->
     <section id="servicos" class="py-32 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col lg:flex-row gap-16">
@@ -185,7 +185,7 @@
                         NOSSOS <span class="text-red-brand">SERVIÇOS</span>
                     </h2>
                     
-                    <!-- Search Bar -->
+                    <!-- Search Bar-Barra de pesquisa -->
                     <div class="relative mb-8">
                         <input 
                             type="text" 
@@ -197,7 +197,7 @@
                         </div>
                     </div>
 
-                    <!-- Table Container -->
+                    <!-- Table Container-Recipiente de mesa -->
                     <div class="table-scroll-container max-h-[500px] overflow-y-auto border border-zinc-200 rounded-xl shadow-lg bg-white">
                         <table class="w-full text-left border-collapse">
                             <thead class="bg-black text-white sticky top-0 z-10">
@@ -431,12 +431,12 @@
             { code: '09', name: 'Suporte Remoto', description: 'Atendimento para suporte e instalação e desinstalação de programa.' },
             { code: '10', name: 'Instalação de Programas', description: 'Office, adobe e outros.' },
             { code: '11', name: 'Instalação de Equipamentos', description: 'Impressoras, câmera e outros.' },
-            { code: '12', name: 'Recuperação de Arquivos', description: 'Recuperação de dados do hd, ssd, micro sd, pen drive.' },
+            { code: '12', name: 'Recuperação de Arquivos', description: 'Recuperação de dados.' },
             { code: '13', name: 'Monitoramento', description: 'Zabbix e Grafana.' },
             { code: '14', name: 'Formatação', description: 'Instalação do sistema operacional, drivers, e programas.' },
         ];
 
-        // 2. DOM Elements
+        // 2. DOM Elements-Elementos DOM
         const tableBody = document.getElementById('table-body');
         const searchInput = document.getElementById('service-search');
         const noResults = document.getElementById('no-results');
@@ -444,7 +444,7 @@
         const mobileMenu = document.getElementById('mobile-menu');
         const yearSpan = document.getElementById('year');
 
-        // 3. Functions
+        // 3. Functions-Funções
         function renderTable(filter = '') {
             const term = filter.toLowerCase().trim();
             tableBody.innerHTML = '';
@@ -474,19 +474,19 @@
             }
         }
 
-        // 4. Event Listeners
+        // 4. Event Listeners-Ouvintes do evento
         searchInput.addEventListener('input', (e) => renderTable(e.target.value));
 
         menuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('active');
         });
 
-        // Close mobile menu on link click
+        // Close mobile menu on link click-Fechar menu móvel ao clicar no link
         document.querySelectorAll('#mobile-menu a').forEach(link => {
             link.addEventListener('click', () => mobileMenu.classList.remove('active'));
         });
 
-        // 5. Init
+        // 5. Init-Inicialização
         yearSpan.textContent = new Date().getFullYear();
         renderTable();
     </script>
